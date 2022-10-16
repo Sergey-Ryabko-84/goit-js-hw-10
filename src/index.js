@@ -19,6 +19,7 @@ function onInputSearch (e) {
     inputName = e.target.value.trim();
     if (!inputName) {
         refs.countryList.innerHTML = '';
+        refs.countryInfo.innerHTML = '';
         return;
     }
     fetchCountries(inputName).then(data => {
@@ -54,4 +55,5 @@ function onCountryClick (e) {
     }
     const wantedObject = this.data.filter(country => country.name === countryName);
     renderBox([...wantedObject]);
+    refs.countryList.removeEventListener('click', onCountryClick);
 }
